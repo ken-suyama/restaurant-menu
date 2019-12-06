@@ -1,0 +1,33 @@
+.genre{
+  width: 300px;
+  height: calc(100vh - 100px);
+  position: absolute;
+  overflow: scroll;
+  border-right: solid 1px;
+  box-shadow: 2px 2px;
+  background-color: rgba(0,0,0,.2);
+  &__list{
+    height: 100%;
+    &--box{
+      text-align: center;
+      line-height: 120px;
+      height: 150px;
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      label{
+        font-weight: bold;
+        height: 0;
+        font-size: 25px;
+        color: ghostwhite;
+      }
+      a{
+        text-decoration: none;
+        line-height: 180px;
+        height: 150px;
+        color: rgb(223, 145, 145);
+      }
+    }
+  }
+
+}

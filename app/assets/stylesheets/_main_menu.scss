@@ -1,0 +1,33 @@
+.menu{
+  margin-left: 300px;
+  background-color: rgba(0,0,0,.2);
+  width: calc(100vw - 300px);
+  height: calc(100vh - 100px);
+  overflow: scroll;
+  &__area{
+    padding: 20px;
+    display: flex;
+    width: calc(100vw - 300px);
+    height: calc(100vh - 100px);
+    flex-wrap: wrap;
+    &__food{
+      width: 32%;
+      padding: 15px;
+      margin: 3px 3px 3px 10px;
+      &--image{
+        width: 100%;
+      }
+      &--name{
+      display: flex;
+      justify-content: space-between;
+      padding-left: 10px;
+      color: white;
+      font-size: 20px;
+        &--price{
+          padding-right: 10px;
+          color: white;
+        }
+      }
+    }
+  }
+}

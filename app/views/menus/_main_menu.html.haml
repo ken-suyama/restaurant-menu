@@ -1,0 +1,10 @@
+.menu
+  .menu__area 
+    - @menus.each do |menu|
+      .menu__area__food
+        = image_tag menu.img, class: 'menu__area__food--image'
+        .menu__area__food--name
+          = menu.name
+          .menu__area__food--name--price
+            ¥
+            = menu.price.to_s(:delimited)
