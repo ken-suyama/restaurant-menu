@@ -7,21 +7,20 @@
       = @menu.name
       .contents__image__text__price
         ¥
-        = @menu.price
+        = @menu.price.to_s(:delimited)
     .contents__order--btn
-      = link_to "注文"
+      = button_to '注文', add_item_path
     %h4 ＜口コミ一覧＞
     .contents__comments
-      - if @comments
-        - @comments.each do |comment|
-          %p.contents__comments__box
-            <
-            = comment.id
-            >
-            = comment.text
-          %p.contents__comments__box--date
-            = comment.created_at
-      .contents__comments__container
-        = form_for( [@menu, @comment],local: true, id: "new_comment") do |f|
-          = f.text_field :text, class: 'contents__comments__container__comment', placeholder: '口コミを書き込んでください'
-          = f.submit "SEND", class: 'contents__comments__container__send'
+      .contents__comments--area
+        - if @comments
+          - @comments.each do |comment|
+            .contents__comments--area--field
+              %p.contents__comments--area--field--box
+                = comment.text
+              %p.contents__comments--area--field--date
+                = comment.created_at.strftime("%Y/%m/%d %H:%M")
+    .contents__container
+      = form_for( [@menu, @comment],local: true, id: "new_comment") do |f|
+        = f.text_field :text, class: 'contents__container__form', placeholder: '口コミを書き込んでください'
+        = f.submit "SEND", class: 'contents__container__send'

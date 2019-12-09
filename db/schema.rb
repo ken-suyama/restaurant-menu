@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191204104435) do
+ActiveRecord::Schema.define(version: 20191208085009) do
+
+  create_table "cart_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "quantity",   default: 0
+    t.integer  "menu_id"
+    t.integer  "cart_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id", using: :btree
+    t.index ["menu_id"], name: "index_cart_items_on_menu_id", using: :btree
+  end
+
+  create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "menu_id"
@@ -30,4 +45,6 @@ ActiveRecord::Schema.define(version: 20191204104435) do
     t.integer  "like_btn",   default: 0
   end
 
+  add_foreign_key "cart_items", "carts"
+  add_foreign_key "cart_items", "menus"
 end
