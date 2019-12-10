@@ -4,16 +4,20 @@ class CartsController < ApplicationController
 
   def show
     @cart_items = current_cart.cart_items
+    @total = 0
+    @cart_items.each do |item|
+      sub_total = ((item.menu[:price]).to_i) * ((item[:quantity]).to_i)
+      @total += sub_total
+    end
   end
 
   def add_item
     if @cart_item.blank?
       @cart_item = current_cart.cart_items.build(menu_id: params[:menu_id])
     end
-
+    @cart_item.quantity += 1
     @cart_item.quantity += params[:quantity].to_i
     @cart_item.save
-    redirect_to current_cart
   end
 
   def update_item

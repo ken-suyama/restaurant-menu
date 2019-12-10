@@ -17,6 +17,8 @@
                 価格
               %th
                 数量
+              %th
+                
             - @cart_items.each do |item|
               %tr
                 %td
@@ -24,9 +26,18 @@
                   = item.menu.name
                 %td
                   %font{size: "4"}
-                  = (item.menu.price).to_i
+                  = (item.menu.price).to_s(:delimited)
                 %td
                   %font{size: "4"}
                   = item.quantity
+                %td
+                  %font{size: "4"}
+                  = button_to "+"
+            %tr
+              %td
+                %font{size: "5"}
+                  Total: 
+                  #{@total.to_s(:delimited)}
+                  円
   %br
   = button_to 'カートを空にする'

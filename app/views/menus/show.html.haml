@@ -9,7 +9,7 @@
         ¥
         = @menu.price.to_s(:delimited)
     .contents__order--btn
-      = button_to '注文', add_item_path
+      = button_to '注文',  menu_add_item_path(menu_id: @menu.id)
     %h4 ＜口コミ一覧＞
     .contents__comments
       .contents__comments--area
