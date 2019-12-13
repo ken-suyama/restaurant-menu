@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   root to: "menus#index"
-  
-  resources :carts, only: [:show, :edit, :new, :create, :destroy]
+
+  resources :carts, only: [:index, :show, :destroy]
   resources :menus, only: [:index, :show] do
     resources :comments, only: [:new, :create]
     resources :cart_items

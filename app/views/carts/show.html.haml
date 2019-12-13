@@ -1,3 +1,6 @@
+url = 'https://www.googleapis.com/books/v1/volumes?q=intitle:'
+
+
 - if notice
   %p#notice= notice
 %br
@@ -40,4 +43,7 @@
                   #{@total.to_s(:delimited)}
                   円
   %br
-  = button_to 'カートを空にする'
+  = button_to '注文する', cart_path, {method: :delete}
+
+  %br
+  = link_to 'お支払い', carts_path, {method: :get}

@@ -2,6 +2,9 @@ class CartsController < ApplicationController
 
   before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
 
+  def index
+  end
+  
   def show
     @cart_items = current_cart.cart_items
     @total = 0
@@ -9,6 +12,12 @@ class CartsController < ApplicationController
       sub_total = ((item.menu[:price]).to_i) * ((item[:quantity]).to_i)
       @total += sub_total
     end
+  end
+
+  def destroy
+    current_cart.destroy
+    session[:cart_id] = nil
+    redirect_to cart_path(current_cart)
   end
 
   def add_item

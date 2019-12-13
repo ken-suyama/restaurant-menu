@@ -8,6 +8,9 @@
       .contents__image__text__price
         ¥
         = @menu.price.to_s(:delimited)
+      .contents__image__text__rate
+        評価
+        #{@average}
     .contents__order--btn
       = button_to '注文',  menu_add_item_path(menu_id: @menu.id)
     %h4 ＜口コミ一覧＞
@@ -23,4 +26,17 @@
     .contents__container
       = form_for( [@menu, @comment],local: true, id: "new_comment") do |f|
         = f.text_field :text, class: 'contents__container__form', placeholder: '口コミを書き込んでください'
-        = f.submit "SEND", class: 'contents__container__send'
+        .col-md-6.col-md-offset-3
+          #star.field
+            = f.label :rate
+            = f.hidden_field :rate, id: :review_rate
+          = f.submit "SEND", class: 'contents__container__send'
+        :javascript
+          $('#star').raty({
+            size     : 36,
+            starOff:  '#{asset_path('star-off.png')}',
+            starHalf: '#{asset_path('star-half.png')}',
+            starOn : '#{asset_path('star-on.png')}',
+            scoreName: 'comment[rate]',
+            half: true
+          });

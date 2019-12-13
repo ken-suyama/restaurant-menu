@@ -12,6 +12,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:text).merge(menu_id: params[:menu_id])
+    params.require(:comment).permit(:text, :rate).merge(menu_id: params[:menu_id])
   end
 end
